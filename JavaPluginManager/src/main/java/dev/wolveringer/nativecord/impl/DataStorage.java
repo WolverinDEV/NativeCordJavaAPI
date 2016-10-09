@@ -5,8 +5,6 @@ import lombok.NonNull;
 import org.apache.commons.lang3.Validate;
 
 import java.lang.reflect.Array;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
 
 /**
  * Created by wolverindev on 03.10.16.
@@ -19,13 +17,13 @@ public class DataStorage {
     private int stringLength;
     private String[] strings;
 
-    private int longLenth;
+    private int longLength;
     private long[] longs;
 
     private int intLength;
     private int[] ints;
 
-    private int byteLengt;
+    private int byteLength;
     private byte[] bytes;
 
     private int doubleLength;
@@ -49,13 +47,13 @@ public class DataStorage {
         this.stringLength = stringLength;
         this.strings = stringLength > 0 || !fixedLength ? new String[stringLength] : null;
 
-        this.longLenth = longLenth;
+        this.longLength = longLenth;
         this.longs = longLenth > 0 || !fixedLength ? new long[longLenth] : null;
 
         this.intLength = intLength;
         this.ints = intLength > 0 || !fixedLength ? new int[intLength] : null;
 
-        this.byteLengt = byteLength;
+        this.byteLength = byteLength;
         this.bytes = byteLength > 0 || !fixedLength ? new byte[byteLength] : null;
 
         this.doubleLength = doubleLength;
@@ -82,7 +80,7 @@ public class DataStorage {
 
     public void setLong(int pos, long val) {
         longs = (long[]) set(longs, pos, val);
-        longLenth = longs.length;
+        longLength = longs.length;
     }
 
 
@@ -102,7 +100,7 @@ public class DataStorage {
 
     public void setByte(int pos, byte val) {
         bytes = (byte[]) set(bytes, pos, val);
-        byteLengt = bytes.length;
+        byteLength = bytes.length;
     }
 
 

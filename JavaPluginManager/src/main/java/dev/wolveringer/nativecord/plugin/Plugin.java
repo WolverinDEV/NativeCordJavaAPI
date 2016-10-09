@@ -1,32 +1,42 @@
 package dev.wolveringer.nativecord.plugin;
 
+import dev.wolveringer.nativecord.Native;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.Validate;
 
-/**
- * Created by wolverindev on 03.10.16.
- */
 public class Plugin {
     private boolean enabled = false;
+
+    @Native
+    private long nativePluginAddress;
     @Getter
     @Setter(AccessLevel.PACKAGE)
-    private long nativePluginAddress;
-    public String getName(){
-        return "undefined";
+    private PluginManager pluginManager;
+    @Getter
+    @Setter(AccessLevel.PACKAGE)
+    private PluginDescription description;
+
+    public final long getNativePluginAddress() {
+        return nativePluginAddress;
     }
 
-    public void getVersion(){
-
+    @Native
+    private final void load(){
+        onLoad();
     }
 
-    public final void enable(){
-        Validate.isTrue(!enabled,"Plugin alredy enabled.");
+    @Native
+    private final void enable(){
+        Validate.isTrue(!enabled,"Plugin already enabled.");
+        onEnable();
     }
 
-    public final void disable(){
-        Validate.isTrue(enabled,"Plugin alredy disabled.");
+    @Native
+    private final void disable(){
+        Validate.isTrue(enabled,"Plugin already disabled.");
+        onDisable();
     }
 
     public void onLoad(){}

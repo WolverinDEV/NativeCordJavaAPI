@@ -1,4 +1,4 @@
-package dev.wolveringer.nativecord.api.event;
+package dev.wolveringer.nativecord.api;
 
 import lombok.Getter;
 
