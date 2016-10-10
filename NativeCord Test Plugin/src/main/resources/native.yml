@@ -1,0 +1,5 @@
+name: TestingPlugin
+main: dev.wolveringer.testplugin.Main
+version: 1.0-SNAPSHOT
+depend: []
+author: [WolverinDEV]

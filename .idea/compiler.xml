@@ -23,10 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="JavaPluginManager" />
+        <module name="NativeCord Test Plugin" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="JavaPluginManager" target="1.7" />
+      <module name="NativeCord Test Plugin" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

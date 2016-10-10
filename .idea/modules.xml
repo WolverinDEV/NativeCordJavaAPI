@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JavaPluginManager/JavaPluginManager.iml" filepath="$PROJECT_DIR$/JavaPluginManager/JavaPluginManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NativeCord Test Plugin/NativeCord Test Plugin.iml" filepath="$PROJECT_DIR$/NativeCord Test Plugin/NativeCord Test Plugin.iml" />
     </modules>
   </component>
 </project>
