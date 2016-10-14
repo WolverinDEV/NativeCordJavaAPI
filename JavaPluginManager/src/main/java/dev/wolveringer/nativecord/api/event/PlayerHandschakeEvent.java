@@ -1,15 +1,15 @@
 package dev.wolveringer.nativecord.api.event;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.ToString;
 
 /**
  * Created by wolverindev on 09.10.16.
  */
 
 @NoArgsConstructor
-public class PlayerHandschakeEvent extends Event {
+@ToString(callSuper = true)
+public class PlayerHandschakeEvent extends PlayerEvent {
     public String getTargetHost(){
         return storage.getString(0);
     }
@@ -32,6 +32,14 @@ public class PlayerHandschakeEvent extends Event {
 
     public void setClientVersion(int version){
         storage.setInt(1, version);
+    }
+
+    public int getState(){
+        return storage.getInt(2);
+    }
+
+    public void setState(int state){
+        storage.setInt(2, state);
     }
 
     @Deprecated //TODO

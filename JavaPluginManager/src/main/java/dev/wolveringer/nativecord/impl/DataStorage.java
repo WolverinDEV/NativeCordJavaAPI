@@ -2,6 +2,7 @@ package dev.wolveringer.nativecord.impl;
 
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.ToString;
 import org.apache.commons.lang3.Validate;
 
 import java.lang.reflect.Array;
@@ -11,6 +12,7 @@ import java.lang.reflect.Array;
  */
 //Fastest way to transfare data between native and java (If you use ByteBuffer every operation a native methode will called.... its fucking slow)
 @Getter
+@ToString
 public class DataStorage {
     private boolean fixedLength = true;
 
@@ -101,6 +103,11 @@ public class DataStorage {
     public void setByte(int pos, byte val) {
         bytes = (byte[]) set(bytes, pos, val);
         byteLength = bytes.length;
+    }
+
+    public void setBytes(byte[] data){
+        this.bytes = data;
+        this.byteLength = data.length;
     }
 
 

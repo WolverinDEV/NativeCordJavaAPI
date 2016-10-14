@@ -62,5 +62,20 @@
             <artifactId>YamlConfiguration</artifactId>
             <version>1.2</version>
         </dependency>
+        <dependency>
+            <groupId>net.md-5</groupId>
+            <artifactId>bungeecord-chat</artifactId>
+            <version>1.10-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-buffer</artifactId>
+            <version>4.0.41.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.wolveringer.lib</groupId>
+            <artifactId>NBTTag</artifactId>
+            <version>1.2.1</version>
+        </dependency>
     </dependencies>
 </project>

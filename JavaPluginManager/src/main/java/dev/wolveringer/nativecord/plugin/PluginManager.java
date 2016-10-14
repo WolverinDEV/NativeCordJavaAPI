@@ -38,6 +38,7 @@ public class PluginManager {
     @Native
     private PluginManager(PluginManagerImpl impl){
         this.impl = impl;
+
         instance = this;
         System.out.println("Java plugin manager created. Using "+impl.toString()+" as implementation.");
     }

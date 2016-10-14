@@ -3,6 +3,7 @@ package dev.wolveringer.testplugin;
 import dev.wolveringer.nativecord.api.EventHandler;
 import dev.wolveringer.nativecord.api.Listener;
 import dev.wolveringer.nativecord.api.event.PlayerHandschakeEvent;
+import dev.wolveringer.nativecord.api.player.PlayerConnection;
 import dev.wolveringer.nativecord.plugin.Plugin;
 import lombok.Getter;
 
@@ -21,8 +22,21 @@ public class Main extends Plugin {
             @EventHandler
             public void a(PlayerHandschakeEvent e){
                 System.out.println("Having handshake event. "+e);
+                if(e != null){
+                    System.out.println("Player connection: "+e.getPlayerConnection());
+                }
             }
         };
+        new Thread(new Runnable() {
+            public void run() {
+                while (true){
+                    try{
+                        Thread.sleep(1000);
+                    }catch (Exception e){}
+                    System.out.println("Players: "+PlayerConnection.getAllConnectedConnections());
+                }
+            }
+        }).start();
         getPluginManager().registerListener(this, listener);
         getPluginManager().registerListener(this, listener);
     }
