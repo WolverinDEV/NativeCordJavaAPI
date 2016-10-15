@@ -10,14 +10,11 @@ import lombok.NonNull;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -35,6 +32,7 @@ public class PluginManager {
 
     private PluginManagerImpl impl;
     private ArrayList<Plugin> avariablePlugins = new ArrayList<>();
+
     @Native
     private PluginManager(PluginManagerImpl impl){
         this.impl = impl;
