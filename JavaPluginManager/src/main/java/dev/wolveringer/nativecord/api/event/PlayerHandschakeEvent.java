@@ -41,9 +41,4 @@ public class PlayerHandschakeEvent extends PlayerEvent {
     public void setState(int state){
         storage.setInt(2, state);
     }
-
-    @Deprecated //TODO
-    public Object getConnection(){
-        return null;
-    }
 }

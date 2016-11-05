@@ -3,7 +3,10 @@ package dev.wolveringer.nativecord.plugin;
 import dev.wolveringer.configuration.file.YamlConfiguration;
 import dev.wolveringer.nativecord.Native;
 import dev.wolveringer.nativecord.api.EventHandler;
+import dev.wolveringer.nativecord.api.InvalidEventMethode;
 import dev.wolveringer.nativecord.api.Listener;
+import dev.wolveringer.nativecord.api.event.Event;
+import dev.wolveringer.nativecord.impl.EventMapper;
 import dev.wolveringer.nativecord.impl.PluginManagerImpl;
 import lombok.NonNull;
 
@@ -130,9 +133,12 @@ public class PluginManager {
             if(m.isAnnotationPresent(EventHandler.class)){
                 System.out.println("Register listener methode: "+m.getName());
                 EventHandler props = m.getAnnotation(EventHandler.class);
-
-                //long plugin,Object object, int eventId, Method methode
-                impl.registerListener(plugin.getNativePluginAddress(), listener, 0, m);
+                if(m.getParameterTypes().length != 1)
+                    throw new InvalidEventMethode("Methode "+m.getClass().getName()+"#"+m.getName()+" hase not oney argument.");
+                int classId = EventMapper.getEventId(m.getParameterTypes()[0]);
+                if(classId < 0)
+                    throw new InvalidEventMethode("Chant find event class: "+m.getParameterTypes()[0].getName());
+                impl.registerListener(plugin.getNativePluginAddress(), listener, classId, m);
             }
         }
     }
