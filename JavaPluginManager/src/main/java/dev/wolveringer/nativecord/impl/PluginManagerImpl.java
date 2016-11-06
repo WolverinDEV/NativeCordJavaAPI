@@ -21,9 +21,9 @@ public class PluginManagerImpl {
     public void registerPlugin(@NonNull Plugin plugin){
         long npluginAddress = registerPlugin0(plugin);
         if(npluginAddress == -1)
-            throw  new RuntimeException("Cant register plugin "+plugin.getName());
+            throw  new RuntimeException("Cant register plugin "+plugin.getDescription().getName());
         if(npluginAddress != plugin.getNativePluginAddress())
-            throw  new RuntimeException("Native didnt register plugin "+plugin.getName()+" (Invalid plugin id: ["+npluginAddress+"/"+plugin.getNativePluginAddress()+"])");
+            throw  new RuntimeException("Native didnt register plugin "+plugin.getDescription().getName()+" (Invalid plugin id: ["+npluginAddress+"/"+plugin.getNativePluginAddress()+"])");
     }
 
     private native long registerPlugin0(Plugin plugin);

@@ -5,9 +5,9 @@ import dev.wolveringer.nativecord.Native;
 import dev.wolveringer.nativecord.api.EventHandler;
 import dev.wolveringer.nativecord.api.InvalidEventMethode;
 import dev.wolveringer.nativecord.api.Listener;
-import dev.wolveringer.nativecord.api.event.Event;
 import dev.wolveringer.nativecord.impl.EventMapper;
 import dev.wolveringer.nativecord.impl.PluginManagerImpl;
+import dev.wolveringer.nativecord.terminal.Console;
 import lombok.NonNull;
 
 import java.io.File;
@@ -39,8 +39,8 @@ public class PluginManager {
     @Native
     private PluginManager(PluginManagerImpl impl){
         this.impl = impl;
-
         instance = this;
+        Console.setup();
         System.out.println("Java plugin manager created. Using "+impl.toString()+" as implementation.");
     }
 
@@ -100,7 +100,7 @@ public class PluginManager {
             }
         }
         if(yamlFile == null)
-            throw  new RuntimeException("Plugin "+file+" missing native.yml");
+            throw new RuntimeException("Plugin "+file+" missing native.yml");
         YamlConfiguration config = YamlConfiguration.loadConfiguration(file.getInputStream(yamlFile));
         PluginDescription description = new PluginDescription(config);
 
@@ -131,7 +131,7 @@ public class PluginManager {
         Method[] methods = listener.getClass().getMethods();
         for(Method m : methods){
             if(m.isAnnotationPresent(EventHandler.class)){
-                System.out.println("Register listener methode: "+m.getName());
+                Console.debugMessage("Register listener methode: "+m.getName());
                 EventHandler props = m.getAnnotation(EventHandler.class);
                 if(m.getParameterTypes().length != 1)
                     throw new InvalidEventMethode("Methode "+m.getClass().getName()+"#"+m.getName()+" hase not oney argument.");
